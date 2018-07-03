@@ -37,7 +37,7 @@ function getTask(req,res){
 function addTask(req,res){
   
   params=[req.body.taskName];
-  sqlQuery = "INSERT INTO tasks (taskName, isDone) values (?)";
+  sqlQuery = "INSERT INTO tasks (taskName) values (?)";
 
   connection.query(sqlQuery, params, (err,result)=>{
     if(err) throw err;

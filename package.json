@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "express": "^4.16.3",
+    "joi": "^13.4.0",
     "mysql": "^2.15.0"
   }
 }

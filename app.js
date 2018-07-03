@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 // var morgan = require('morgan')
 
 var tasks = require('./routes/tasks');
+var joiValidator = require('./services/joiValidator');
 
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -22,10 +23,10 @@ connection.connect((err) => {
   console.log("Connected");
 })
 
-app.get("/getTasks", tasks.getTask);
-app.post("/addTasks", tasks.addTask);
-app.put("/updateTasks", tasks.updateTask);
-app.delete("/deleteTasks", tasks.deleteTask);
+app.get("/getTasks", joiValidator.getTaskValidator, tasks.getTask);
+app.post("/addTasks", joiValidator.addTaskValidator, tasks.addTask);
+app.put("/updateTasks", joiValidator.updateTaskValidator, tasks.updateTask);
+app.delete("/deleteTasks", joiValidator.deleteTaskValidator, tasks.deleteTask);
 
 
 
